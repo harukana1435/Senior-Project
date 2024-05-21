@@ -1,8 +1,6 @@
 # 人体キーポイントを用いて映像に整合する楽器音を生成するタスク
 
-DEIM2024 第16回 データ工学と情報マネジメントに関するフォーラム
-
-• [[学会 ページ](https://confit.atlas.jp/guide/event/deim2024/subject/T4-A-2-04/tables?cryptoId=)]
+DEIM2024 第16回 データ工学と情報マネジメントに関するフォーラム　参加　[[学会 ページ](https://confit.atlas.jp/guide/event/deim2024/subject/T4-A-2-04/tables?cryptoId=)]
 
 # Overview
 We propose to tame the visually guided sound generation by shrinking a training dataset to a set of representative vectors aka. a codebook.
