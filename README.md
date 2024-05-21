@@ -9,7 +9,8 @@
 - [人体キーポイントとは](#人体キーポイントとは)
 - [モデルの全体構造](#モデルの全体構造)
 - [データセット](#データセット)
-
+- [リポジトリの説明](#リポジトリの説明)
+    
 ## 概要 
 　楽器演奏の動画は音が重要な要素であるため，撮影中に騒音が入った動画や音質が劣化した昔の動画は音声の改善が求められる．その際，ノイズ除去技術は有効な手法だが，極めて劣悪な音声はノイズ除去による音声の修復が難しい．そこで，動画の視覚情報のみから演奏者が弾いている楽器音を予測して生成することを研究目的とした．先行研究([SpecVQGAN](https://v-iashin.github.io/SpecVQGAN))はコードブック表現やTransformerによって質の高い音声を生成できるが，楽器演奏という複雑な動作の映像に対しては予測精度が低いという現状がある．本研究の提案モデルは既存モデルに人体キーポイントを導入することで，楽器音の生成精度を向上させることを目指す．アンケートによる主観評価と4つの尺度を用いた客観評価を行った結果，実際の音声と生成した音声の類似性の観点で，提案モデルが既存モデルを上回った．
 
@@ -55,20 +56,52 @@
 ### data
 モデルに入力する動画の特徴量が格納されている．
 ### keypoint_feature
-人体キーポイントデータを処理するプログラムやST-GCNのプログラムが格納されている．
-`extract_solos_keypoint.py`，`generate_stgcn_data.py`:人体キーポイントデータからST-GCNの学習データを作成する
-`stgcn_data.py`，`stgcn_model.py`，`stgcn_train_test_generate.py`:ST-GCNの学習を行い，人体キーポイント特徴を計算する
+人体キーポイントデータを処理するプログラムやST-GCNのプログラムが格納されている．  
+`extract_solos_keypoint.py`，`generate_stgcn_data.py`:人体キーポイントデータからST-GCNの学習データを作成する．  
+`stgcn_data.py`，`stgcn_model.py`，`stgcn_train_test_generate.py`:ST-GCNの学習を行い，人体キーポイント特徴を計算する．  
 ### logs
 提案モデルの学習結果が格納されている．
 ### preprocess
-動画の前処理を行うプログラムが格納されている
-`extract_solos_keypoint.py`:solosデータセットに含まれている楽器演奏の動画をyoutubeからダウンロードする
-`convert_solos_25fps.py`:動画を25fpsに変換する
-`generate_10s_video.py`:動画を10秒間隔で切り分ける
-`extract_25fps_audio.py`:25fpsの動画から音声のみを抽出する
-`tempo_change.py`:音声のテンポを変更する
-`concatenate_video_and_audio.py`:音声と動画を結合する
-`generate_solos_json.py`:切り分けた10秒の動画に対する情報をjsonに書き出す
-`generate_train_valid_txt.py`:データセット内の動画を訓練用とテスト用に分割する
+動画の前処理を行うプログラムが格納されている．  
+`extract_solos_keypoint.py`:solosデータセットに含まれている楽器演奏の動画をyoutubeからダウンロードする．  
+`convert_solos_25fps.py`:動画を25fpsに変換する．  
+`generate_10s_video.py`:動画を10秒間隔で切り分ける．  
+`extract_25fps_audio.py`:25fpsの動画から音声のみを抽出する．  
+`tempo_change.py`:音声のテンポを変更する．  
+`concatenate_video_and_audio.py`:音声と動画を結合する．  
+`generate_solos_json.py`:切り分けた10秒の動画に対する情報をjsonに書き出す．  
+`generate_train_valid_txt.py`:データセット内の動画を訓練用とテスト用に分割する．  
+### solos_data
+前処理の過程で作成されたデータが格納されている．
+### specvqgan
+既存モデルのソースコードが格納されている．
+### vocoder
+生成したメルスペクトログラムを音声波形に変換するボコーダのプログラムが格納されている．
+### conda_env.yml
+anacondaの仮想環境を構築するプログラム．以下のコマンドで実行．  
+`conda env create -f conda_env.yml`
+### train.py
+コードブック及びTransformerを訓練するプログラム．以下のコマンドで実行． 
+#### コードブック
+`python train.py --base configs/solos_codebook.yaml -t True --gpus 0,`
+#### Transformer
+`python train.py --base configs/solos_transformer.yaml -t True --gpus 0, \
+    model.params.first_stage_config.params.ckpt_path=./logs/solos_codebook_52/checkpoints/last.ckpt`
+
+### generate_samples.py
+学習したモデルを用いてテストデータを対象に楽器音を生成するプログラム．以下のコマンドで実行．  
+`python -m torch.distributed.launch \
+    --nproc_per_node=8 \
+    --nnodes=1 \
+    --node_rank=0 \
+    --master_addr=localhost \
+    --master_port=62374 \
+    --use_env \
+        evaluation/generate_samples.py \
+        sampler.config_sampler=evaluation/configs/sampler.yaml \
+        data.params.spec_dir_path="./data/solos/features/*/melspec_10s_22050hz/" \
+        data.params.rgb_feats_dir_path="./data/solos/features/*/feature_rgb_bninception_dim1024_21.5fps/" \
+        data.params.flow_feats_dir_path="./data/solos/features/*/feature_flow_bninception_dim1024_21.5fps/" \     data.params.keypoint_feats_dir_path="./data/solos/features/*/feature_keypoint_dim64_21.5fps/" \
+        sampler.now=`date +"%Y-%m-%dT%H-%M-%S"``
 
 
