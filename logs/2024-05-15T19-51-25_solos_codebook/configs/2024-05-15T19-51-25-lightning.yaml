@@ -1,0 +1,15 @@
+lightning:
+  callbacks:
+    image_logger:
+      target: train.ImageLogger
+      params:
+        for_specs: true
+        vocoder_cfg:
+          target: train.VocoderMelGan
+          params:
+            ckpt_vocoder: ./vocoder/logs/vggsound/
+  trainer:
+    sync_batchnorm: true
+    distributed_backend: ddp
+    gpus: 0,
+    resume_from_checkpoint: logs/2024-05-15T17-10-13_solos_codebook/checkpoints/last.ckpt

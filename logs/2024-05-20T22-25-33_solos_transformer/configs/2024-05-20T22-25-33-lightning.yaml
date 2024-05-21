@@ -1,0 +1,27 @@
+lightning:
+  modelcheckpoint:
+    target: pytorch_lightning.callbacks.ModelCheckpoint
+    params:
+      monitor: val/loss
+      mode: min
+      save_last: null
+  callbacks:
+    image_logger:
+      target: train.ImageLogger
+      params:
+        for_specs: true
+        vocoder_cfg:
+          target: train.VocoderMelGan
+          params:
+            ckpt_vocoder: ./vocoder/logs/vggsound/
+    early_stop_callback:
+      target: pytorch_lightning.callbacks.EarlyStopping
+      params:
+        monitor: val/loss
+        mode: min
+        min_delta: 0.0
+        patience: 2
+        verbose: true
+  trainer:
+    distributed_backend: ddp
+    gpus: 0,1,2,3,4,5,6,7

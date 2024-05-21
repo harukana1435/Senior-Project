@@ -1,0 +1,8 @@
+*.pkl
+*.wav
+*.npy
+*.mp4
+*.jpg
+*.ckpt
+*.0
+*.pt
