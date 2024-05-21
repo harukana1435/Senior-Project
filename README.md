@@ -1,19 +1,8 @@
-# Taming Visually Guided Sound Generation
+# 人体キーポイントを用いて映像に整合する楽器音を生成するタスク
 
-BMVC 2021 – Oral Presentation
+DEIM2024 第16回 データ工学と情報マネジメントに関するフォーラム
 
-• [[Project Page](https://v-iashin.github.io/SpecVQGAN)]
-• [[ArXiv](http://arxiv.org/abs/2110.08791)]
-• [[BMVC Proceedings](https://www.bmvc2021-virtualconference.com/conference/papers/paper_1213.html)]
-• [[Poster (for PAISS)](https://v-iashin.github.io/images/specvqgan/poster.pdf)]
-• [[Presentation on YouTube](https://www.youtube.com/watch?v=Bucb3nAa398)] ([Can't watch YouTube?](https://a3s.fi/swift/v1/AUTH_a235c0f452d648828f745589cde1219a/specvqgan_public/SpecVQGAN%20YouTube.mp4))
-•
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1pxTIMweAKApJZ3ZFqyBee3HtMqFpnwQ0?usp=sharing)
-
-<img src="https://github.com/v-iashin/v-iashin.github.io/raw/master/images/specvqgan/specvqgan_vggsound_samples.jpg" alt="Generated Samples Using our Model" width="900">
-
-Listen for the samples on our [project page](https://v-iashin.github.io/SpecVQGAN).
+• [[学会 ページ](https://confit.atlas.jp/guide/event/deim2024/subject/T4-A-2-04/tables?cryptoId=)]
 
 # Overview
 We propose to tame the visually guided sound generation by shrinking a training dataset to a set of representative vectors aka. a codebook.
