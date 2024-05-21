@@ -1,4 +1,4 @@
-name: specvqgan
+name: SeniorProject
 channels:
   - pytorch
   - conda-forge
