@@ -1,7 +1,7 @@
 # 人体キーポイントを用いて映像に整合する楽器音を生成するモデルの提案
 
 - 2023年度 電気通信大学 卒業研究発表会 [[卒論](https://github.com/harukana1435/Senior-Project/files/15397429/2010136_.pdf)]
-- DEIM2024 第16回 データ工学と情報マネジメントに関するフォーラム　[[学会ページ](https://confit.atlas.jp/guide/event/deim2024/subject/T4-A-2-04/tables?cryptoId=)]
+- DEIM2024 第16回 データ工学と情報マネジメントに関するフォーラム [[学会ページ](https://confit.atlas.jp/guide/event/deim2024/subject/T4-A-2-04/tables?cryptoId=)]
 
 ## 目次
 - [概要](#概要)
