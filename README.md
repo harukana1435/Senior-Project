@@ -28,7 +28,7 @@
 
 
 ## 人体キーポイントとは
-人体の骨格を疑似的に表した特徴点のことであり，人間の身体の部位や関節の位置をピンポイントで示している．本研究の人体キーポイントは，右図のように47個の特徴点から構成されている．本研究では音を生成するにあたって，人体キーポイントデータから演奏者の動きを表す特徴量，すなわち人体キーポイント特徴を抽出する工程がある．
+人体の骨格を疑似的に表した特徴点のことであり，人間の身体の部位や関節の位置をピンポイントで示している．本研究の人体キーポイントは，47個の特徴点から構成されている．本研究では音を生成するにあたって，人体キーポイントデータから演奏者の動きを表す特徴量，すなわち人体キーポイント特徴を抽出する工程がある．
 <div align="center" style="line-height: 0;">
   <img src="https://github.com/harukana1435/Senior-Project/assets/167507629/6a337c71-1e3d-4c85-bc22-46cc2f641883" alt="Image 1" width="277" style="vertical-align: middle;"/>
   <img src="https://github.com/harukana1435/Senior-Project/assets/167507629/a0d2be7e-ceb3-4755-9b08-347e7cc7aeff" alt="Image 2" width="300" style="vertical-align: middle;"/>
