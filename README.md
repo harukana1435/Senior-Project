@@ -57,20 +57,20 @@
 モデルに入力する動画の特徴量が格納されている．
 ### keypoint_feature
 人体キーポイントデータを処理するプログラムやST-GCNのプログラムが格納されている．  
-`extract_solos_keypoint.py`，`generate_stgcn_data.py`:人体キーポイントデータからST-GCNの学習データを作成する．  
-`stgcn_data.py`，`stgcn_model.py`，`stgcn_train_test_generate.py`:ST-GCNの学習を行い，人体キーポイント特徴を計算する．  
+- `extract_solos_keypoint.py`，`generate_stgcn_data.py`:人体キーポイントデータからST-GCNの学習データを作成する．  
+- `stgcn_data.py`，`stgcn_model.py`，`stgcn_train_test_generate.py`:ST-GCNの学習を行い，人体キーポイント特徴を計算する．  
 ### logs
 提案モデルの学習結果が格納されている．
 ### preprocess
 動画の前処理を行うプログラムが格納されている．  
-`extract_solos_keypoint.py`:solosデータセットに含まれている楽器演奏の動画をyoutubeからダウンロードする．  
-`convert_solos_25fps.py`:動画を25fpsに変換する．  
-`generate_10s_video.py`:動画を10秒間隔で切り分ける．  
-`extract_25fps_audio.py`:25fpsの動画から音声のみを抽出する．  
-`tempo_change.py`:音声のテンポを変更する．  
-`concatenate_video_and_audio.py`:音声と動画を結合する．  
-`generate_solos_json.py`:切り分けた10秒の動画に対する情報をjsonに書き出す．  
-`generate_train_valid_txt.py`:データセット内の動画を訓練用とテスト用に分割する．  
+- `extract_solos_keypoint.py`:solosデータセットに含まれている楽器演奏の動画をyoutubeからダウンロードする．  
+- `convert_solos_25fps.py`:動画を25fpsに変換する．  
+- `generate_10s_video.py`:動画を10秒間隔で切り分ける．  
+- `extract_25fps_audio.py`:25fpsの動画から音声のみを抽出する．  
+- `tempo_change.py`:音声のテンポを変更する．  
+- `concatenate_video_and_audio.py`:音声と動画を結合する．  
+- `generate_solos_json.py`:切り分けた10秒の動画に対する情報をjsonに書き出す．  
+- `generate_train_valid_txt.py`:データセット内の動画を訓練用とテスト用に分割する．  
 ### solos_data
 前処理の過程で作成されたデータが格納されている．
 ### specvqgan
